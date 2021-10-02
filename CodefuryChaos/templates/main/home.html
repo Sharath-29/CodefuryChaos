@@ -227,12 +227,12 @@
 
 
   </div>
-  <div class="col-md-3">
+  <div class="col-md-3"> 
     <h5>People you may know</h5>
     {% for usr in non_followed_user %}
     <div class="card mb-1" style="max-width: 540px;">
       <div class="row no-gutters">
-        <div class="col-3 text-center align-items-center d-flex" style="">
+        <div class="col-3 text-center align-items-center d-flex">
           <a href="{% url 'profile' usr %}" class="m-auto"><img
               src="{{usr.profile.profile_pic.url}}" class="card-img m-auto"
               style="width: 49px" alt="..."></a>
@@ -254,5 +254,4 @@
     {% endfor %}
   </div>
 </div>
-
 {% endblock main_body %}
