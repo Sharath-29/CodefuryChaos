@@ -40,7 +40,7 @@
           </span>
           <span class="followers" onclick="getFollowers()">
             <span class="count" id="followers_count">{{user.profile.followers.count}}</span>
-            followers
+            Connections
           </span>
         </div>
       </div>
@@ -51,7 +51,7 @@
     <div class="well well-sm well-social-post">
       <form method="post" enctype="multipart/form-data"> {% csrf_token %}
         <ul class="list-inline" id=''>
-          <li class='list-inline-item font-weight-bold'><a href='#'>Add Post</a></li>
+          <li class='list-inline-item font-weight-bold'><a href='#'>Ask your question!</a></li>
           <li class="list-inline-item"> <input type="file" accept="image/*"
               name="post_image" id="add_post_image" style="visibility: hidden;"></li>
         </ul>
@@ -115,8 +115,7 @@
         <img src="{{post.picture.url}}" class="w-100 img-fluid">
         {% endif %}
         <small class="text-muted pull-right">
-          <b class="likes">{{post.likes.count}}</b> Likes &nbsp;
-          <b class="dislikes">{{post.dislikes.count}}</b> Dislikes
+          <b class="likes">{{post.likes.count}}</b> Upvote &nbsp;
         </small>
       </div>
 
@@ -129,7 +128,7 @@
           class="card-link m-auto click" onclick="Post('like', '{{post.id}}')"
           {% endif %}>
 
-          <i class="fa fa-gittip"></i> Like</p>
+          <i class="fa fa-gittip"></i> Upvote</p>
 
 
         <p
@@ -139,12 +138,12 @@
           {% else %}
           class="card-link m-auto click" onclick="Post('dislike',
           '{{post.id}}')"
-          {% endif %}><i class="fa fa-thumbs-down"></i> Dislike</p>
+          {% endif %}
 
         <a class="card-link m-auto click" data-toggle="collapse"
           data-target="#post{{post.id}}comments" aria-expanded="false"
           aria-controls="post{{post.id}}comments"><i class="fa fa-comment"></i>
-          Comment</a>
+          Answer</a>
       </div>
       <div class="collapse" id="post{{post.id}}comments">
         <div class="card" style="border:none">
@@ -228,7 +227,7 @@
 
   </div>
   <div class="col-md-3">
-    <h5>Peoples may you know</h5>
+    <h5>People you may know</h5>
     {% for usr in non_followed_user %}
     <div class="card mb-1" style="max-width: 540px;">
       <div class="row no-gutters">
@@ -244,7 +243,7 @@
               {% if usr in request.user.profile.followers.all %}
               Follow Back
               {% else %}
-              Follow
+              Connect
               {% endif %}
             </button>
           </div>

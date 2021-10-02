@@ -71,7 +71,7 @@
               </span>
               <span class="followers" onclick="getFollowers()">
                 <span class="count" id="followers_count">{{user.profile.followers.count}}</span>
-                followers
+                Connections
               </span>
             </div>
           </div>
@@ -79,7 +79,7 @@
     <div class="row mt-2">
     	<div class="col-md-3">
     		<div class="card">
-          <a class="btn" onclick="DisplayMenu('posts')" href="#posts">Posts</a>
+          <a class="btn" onclick="DisplayMenu('posts')" href="#posts">Questions</a>
     			<a class="btn" onclick="DisplayMenu('about')" href="#about">About {{user.first_name}}</a>
           {% if useritself %}
     			<a class="btn" onclick="DisplayMenu('changePass')" href="#changePass">Change Password</a>
@@ -93,7 +93,7 @@
           <div id="posts" style="display: block;">
             <div class="card-body">
               <h5>
-                Posts of {{user.get_full_name}}
+                Discussions by {{user.get_full_name}}
               </h5>
                 
                   {% for post in posts %}
@@ -144,8 +144,8 @@
                         <img src="{{post.picture.url}}" class="w-100 img-fluid">
                         {% endif %}
                         <small class="text-muted pull-right">
-                          <b class="likes">{{post.likes.count}}</b> Likes &nbsp;
-                          <b class="dislikes">{{post.dislikes.count}}</b> Dislikes
+                          <b class="likes">{{post.likes.count}}</b> Upvote &nbsp;
+                          
                         </small>
                       </div>
 
@@ -158,7 +158,7 @@
                           class="card-link m-auto click" onclick="Post('like', '{{post.id}}')"
                           {% endif %}>
 
-                          <i class="fa fa-gittip"></i> Like</p>
+                          <i class="fa fa-gittip"></i> Upvote</p>
 
 
                         <p
@@ -168,12 +168,12 @@
                           {% else %}
                           class="card-link m-auto click" onclick="Post('dislike',
                           '{{post.id}}')"
-                          {% endif %}><i class="fa fa-thumbs-down"></i> Dislike</p>
+                          {% endif %}
 
                         <a class="card-link m-auto click" data-toggle="collapse"
                           data-target="#post{{post.id}}comments" aria-expanded="false"
                           aria-controls="post{{post.id}}comments"><i class="fa fa-comment"></i>
-                          Comment</a>
+                          Answer</a>
                       </div>
                       <div class="collapse" id="post{{post.id}}comments">
                         <div class="card" style="border:none">
